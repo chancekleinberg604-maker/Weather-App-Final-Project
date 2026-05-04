@@ -1,4 +1,4 @@
-package FinalProject;
+package FinalProject.FinalProject;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
