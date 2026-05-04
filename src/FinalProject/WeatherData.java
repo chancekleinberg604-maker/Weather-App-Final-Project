@@ -79,20 +79,6 @@ public class WeatherData {
         return "Unknown";
     }
 
-    public String getSuggestedIcon() {
-        int code = weatherCode;
-        boolean day = isDay == 1;
-
-        if (code == 0) return day ? "☀️" : "🌙";
-        if (code == 1 || code == 2 || code == 3) return day ? "⛅" : "☁️";
-        if (code == 45 || code == 48) return "🌫️";
-        if (code == 51 || code == 53 || code == 55) return "🌦️";
-        if (code == 61 || code == 63 || code == 65) return "🌧️";
-        if (code == 71 || code == 73 || code == 75) return "❄️";
-        if (code == 95 || code == 96 || code == 99) return "⛈️";
-        return "❔";
-    }
-
     public String getCity() {
         return city;
     }

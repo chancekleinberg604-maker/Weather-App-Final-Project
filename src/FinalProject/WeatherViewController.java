@@ -3,6 +3,8 @@ package FinalProject.FinalProject;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class WeatherViewController {
 
@@ -13,9 +15,9 @@ public class WeatherViewController {
     @FXML private Label humidityLabel;
     @FXML private Label pressureLabel;
     @FXML private Label conditionLabel;
-    @FXML private Label iconLabel;
     @FXML private Label errorLabel;
     @FXML private Label locationLabel;
+    @FXML private ImageView imgDayOrNight;
 
     private final WeatherService weatherService = new WeatherService();
 
@@ -38,8 +40,9 @@ public class WeatherViewController {
             humidityLabel.setText(String.format("%.0f%%", data.getHumidity()));
             pressureLabel.setText(String.format("%.1f hPa", data.getPressure()));
             conditionLabel.setText(data.getConditionName());
-            iconLabel.setText(data.getSuggestedIcon());
             locationLabel.setText(data.getCity() + ", " + data.getState());
+
+            setWeatherIcon(data);  // <-- set PNG icon
 
             errorLabel.setText("");
             errorLabel.setOpacity(0.0);
@@ -48,5 +51,33 @@ public class WeatherViewController {
             errorLabel.setText("Error fetching weather. Check ZIP or network.");
             errorLabel.setOpacity(1.0);
         }
+    }
+
+    private void setWeatherIcon(WeatherData data) {
+        String condition = data.getConditionName().toLowerCase();
+        boolean day = data.getIsDay() == 1;
+
+        String iconFile = "unknown.png";
+
+        if (condition.contains("clear")) {
+            iconFile = day ? "sunny.png" : "night.png";
+        } else if (condition.contains("partly") || condition.contains("cloud")) {
+            iconFile = "cloudy.png";
+        } else if (condition.contains("fog")) {
+            iconFile = "fog.png";
+        } else if (condition.contains("drizzle")) {
+            iconFile = "drizzle.png";
+        } else if (condition.contains("rain")) {
+            iconFile = "rain.png";
+        } else if (condition.contains("snow")) {
+            iconFile = "snow.png";
+        } else if (condition.contains("thunder")) {
+            iconFile = "storm.png";
+        }
+
+        Image img = new Image(
+                getClass().getResource("/FinalProject/Images/" + iconFile).toString()
+        );
+        imgDayOrNight.setImage(img);
     }
 }

@@ -11,7 +11,7 @@ public class MainApplication extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         FXMLLoader loader = new FXMLLoader(
-                getClass().getResource("/FinalProject/WeatherViewFXML.fxml")
+                getClass().getResource("/FinalProject/FinalProject/WeatherViewFXML.fxml")
         );
 
         Scene scene = new Scene(loader.load(), 700, 600);
