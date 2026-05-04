@@ -1,4 +1,4 @@
-package FinalProject.FinalProject;
+package FinalProject;
 
 public class WeatherData {
 
