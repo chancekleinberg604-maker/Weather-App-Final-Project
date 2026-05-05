@@ -1,4 +1,4 @@
-🌦️ Weather Lookup App
+    🌦️ Weather Lookup App
 The Weather Lookup App is a JavaFX application that retrieves and displays real‑time weather information based on a user‑provided ZIP code. It combines a modern, visually appealing interface with live 
 data from two public APIs. When a ZIP code is entered, the app automatically determines the corresponding city and state, fetches the current weather conditions for that location, and presents everything 
 in a clean, organized layout. This project demonstrates practical Java concepts including API integration, JSON parsing, JavaFX UI design, and event‑driven programming.
